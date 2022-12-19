@@ -12,13 +12,13 @@ interface AlbumRepository : CrudRepository<Album, AlbumId> {
 
     @Modifying
     @Query("insert into albums(author, name, content) values (:author, :name, :content)")
-    fun post(@Param("author") folder: String, @Param("name") name: String, @Param("content") content: String)
+    fun post(@Param("author") author: String, @Param("name") name: String, @Param("content") content: String)
 
     @Modifying
     @Query("delete from albums where author = :author and name = :name")
-    fun delete(@Param("author") folder: String, @Param("name") name: String)
+    fun delete(@Param("author") author: String, @Param("name") name: String)
 
     @Modifying
     @Query("update albums set content = :content where author = :author and name = :name")
-    fun update(@Param("author") folder: String, @Param("name") name: String, @Param("content") content: String)
+    fun update(@Param("author") author: String, @Param("name") name: String, @Param("content") content: String)
 }

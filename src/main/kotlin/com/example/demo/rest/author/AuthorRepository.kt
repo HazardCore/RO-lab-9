@@ -12,4 +12,8 @@ interface AuthorRepository : CrudRepository<Author, String> {
     @Modifying
     @Query("insert into authors(name) values (:name)")
     fun post(@Param("name") name: String)
+
+    @Modifying
+    @Query("delete from authors where name = :name")
+    fun delete(@Param("name") name: String)
 }
